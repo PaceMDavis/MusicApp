@@ -1,13 +1,19 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core'
 import Switch from '@material-ui/core/Switch'
 
+
+// We are reporting whether or not it is online with a boolean
+// If it is not online, we need to create a message and keep a tally of the message
+//The message happens in the state.notifications array
 const onlineMode = (props) => {
+
+
+  console.log(props)
   return (
     <div>
       <Card>
@@ -22,7 +28,10 @@ const onlineMode = (props) => {
       </CardContent>
       <CardActions>
       <Switch
-        name="checkedA"
+        name="checked"
+        onChange = {props.onChange}
+        checked = {props.online}
+        // value = {props.online}
         inputProps={{ 'aria-label': 'secondary checkbox' }}
       />
       </CardActions>

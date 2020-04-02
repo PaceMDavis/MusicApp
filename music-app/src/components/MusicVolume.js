@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,7 @@ import Slider from '@material-ui/core/Slider';
 
 
 const musicVolume = (props) => {
+  console.log(props)
   return (
     <div>
       <Card>
@@ -23,12 +24,15 @@ const musicVolume = (props) => {
       </CardContent>
       <CardActions>
       <Slider
-        defaultValue={30}
+        name="volume-slider"
+        // defaultValue={30}
+        value = {props.volume}
+        onChange ={props.onChange}
         aria-labelledby="discrete-slider"
         valueLabelDisplay="auto"
         step={10}
         marks
-        min={10}
+        min={0}
         max={100}
       />
       </CardActions>
