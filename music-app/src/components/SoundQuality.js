@@ -10,7 +10,6 @@ import Select from '@material-ui/core/Select';
 
 
 const soundQuality = (props) => {
-  console.log(props)
   return (
     <div>
       <Card>
@@ -25,7 +24,7 @@ const soundQuality = (props) => {
       </CardContent>
       <CardActions>
       <FormControl>
-        <Select onChange = {props.onChange} value={props.quality}>
+        <Select name = "quality-select" onChange = {props.onChange} value={props.quality}>
           <MenuItem value={10}>Low</MenuItem>
           <MenuItem value={20}>Normal</MenuItem>
           <MenuItem value={30}>High</MenuItem>

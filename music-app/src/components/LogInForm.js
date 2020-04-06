@@ -29,7 +29,7 @@ const LogInForm = (props) => {
       />
       <br />
       <TextField 
-        id="standard-password-input" 
+        required id="standard-password-input" 
         type="password" 
         label="Password*" 
         name="password" 

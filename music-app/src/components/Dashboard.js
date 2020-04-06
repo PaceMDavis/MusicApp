@@ -7,6 +7,7 @@ import React from 'react';
 import OnlineMode from './OnlineMode'
 import MusicVolume from './MusicVolume'
 import SoundQuality from './SoundQuality'
+import ListComponent from './ListComponent'
 
 
 
@@ -19,7 +20,8 @@ class Dashboard extends React.Component {
       volume: 30,
       quality: '20',
       notifications: [],
-      message: ''
+      message: '',
+      reset: false
     }
     // this.listAdd = this.listAdd.bind(this)
     // this.switchToggle = this.switchToggle.bind(this)
@@ -46,10 +48,17 @@ class Dashboard extends React.Component {
     this.setState({
       volume: newValue,
     })
-    if(newValue > 80) {
+    if(newValue >= 80 && !this.state.reset) {
       this.setState({
-        notifications: [...this.state.notifications, message]
+        notifications: [...this.state.notifications, message],
+        reset: true
       })
+    }
+    if(newValue < 80 && this.state.reset) {
+      this.setState({
+        reset: false
+      })
+      
     }
   
   }
@@ -59,26 +68,19 @@ class Dashboard extends React.Component {
     this.setState({
       quality: event.target.value
     })
-    
-  
     if(event.target.value === 10) {
       this.setState({
         notifications: [...this.state.notifications, message]
       })
     }
-  
   }
 
-  // notificationUpdate = event => {
-  //   event.preventDefault()
-  //   this.setState({
-  //     notifications: [...this.state.notifications, this.state.message]
-  //   })
-  // }
+  
+
 
   render() {
     // const notifications = this.state.notifications;
-    // console.log(this.state.online, "birds")
+    console.log(this.state.notifications, "birds")
     return (
       <div>
         <div className="dashboard">
@@ -94,10 +96,9 @@ class Dashboard extends React.Component {
         </div>
         <br/>
         <div>
-          <h2>System Notifications:</h2>
-            <div>
-              {this.state.notifications}
-            </div>
+          <div>
+              <ListComponent notifications={this.state.notifications} />
+          </div>
           {/* {notifications} */}
         </div>
       </div>
