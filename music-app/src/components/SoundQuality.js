@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -9,10 +9,21 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-const soundQuality = (props) => {
+const SoundQuality = (props) => {
+
+const useStyles = makeStyles (() => ({
+  root: {
+    height: '175px',
+    padding: '15px'
+  }
+}))
+  
+const classes = useStyles()
+
+
   return (
     <div>
-      <Card>
+      <Card className= {classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
           Sound Quality
@@ -37,4 +48,4 @@ const soundQuality = (props) => {
 }
 
 
-export default soundQuality;
+export default SoundQuality;

@@ -1,6 +1,6 @@
 import React from 'react';
 // import Card from '@material-ui/core/Card';
-// import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent';
 // import Typography from '@material-ui/core/Typography';
@@ -9,7 +9,21 @@ import MusicVolume from './MusicVolume'
 import SoundQuality from './SoundQuality'
 import ListComponent from './ListComponent'
 
-
+const useStyles = ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'space-between',
+    height: '200px',
+    flexWrap: 'wrap'
+  }, sub: {
+    padding: '30px'
+  }, card: {
+    width: '25%',
+    maxHeight: '100px',
+    padding: '40px'
+  }
+})
 
 
 class Dashboard extends React.Component {
@@ -26,6 +40,7 @@ class Dashboard extends React.Component {
     // this.listAdd = this.listAdd.bind(this)
     // this.switchToggle = this.switchToggle.bind(this)
   // }
+  
 
 
   switchToggle = event => {
@@ -79,24 +94,25 @@ class Dashboard extends React.Component {
 
 
   render() {
+    const { classes } = this.props;
     // const notifications = this.state.notifications;
     console.log(this.state.notifications, "birds")
     return (
       <div>
-        <div className="dashboard">
-          <div className="card">
-            <OnlineMode onChange={this.switchToggle} online={this.state.online}/>
+        <div className={classes.root}>
+          <div className={classes.card}>
+            <OnlineMode className={classes.subCard} onChange={this.switchToggle} online={this.state.online}/>
           </div>
-          <div className="card">
-            <MusicVolume onChange ={this.volumeToggle} volume ={this.state.volume} />
+          <div className={classes.card}>
+            <MusicVolume className={classes.subCard} onChange ={this.volumeToggle} volume ={this.state.volume} />
           </div>
-          <div className="card">
+          <div className={classes.card}>
             <SoundQuality onChange={this.qualityToggle} quality={this.state.quality}/>
           </div>
         </div>
         <br/>
         <div>
-          <div>
+          <div className={classes.sub}>
               <ListComponent notifications={this.state.notifications} />
           </div>
           {/* {notifications} */}
@@ -107,4 +123,4 @@ class Dashboard extends React.Component {
 }
 
 
-export default Dashboard
+export default withStyles(useStyles)(Dashboard)

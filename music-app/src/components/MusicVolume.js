@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -8,20 +8,22 @@ import Slider from '@material-ui/core/Slider';
 
 
 
-const musicVolume = (props) => {
-  console.log(props)
-  // const tooLoud = () => {
-  //   if(props.volume > 80) {
-  //     return (
-  //       <ul>Listening to music at a high volume could cause long-term hearing loss.</ul>
-  //     )
-  //   } else {
-  //     return props.volume
-  //   }
-  // }
+const MusicVolume = (props) => {
+
+
+  const useStyles = makeStyles (() => ({
+    root: {
+      height: '175px',
+      padding: '15px'
+    }
+  }))
+    
+  const classes = useStyles()
+  
+
   return (
     <div>
-      <Card>
+      <Card className= {classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
          Master Volume
@@ -51,4 +53,4 @@ const musicVolume = (props) => {
 }
 
 
-export default musicVolume;
+export default MusicVolume;
